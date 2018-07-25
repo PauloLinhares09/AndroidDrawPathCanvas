@@ -13,30 +13,30 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(LinearLayoutLogin(this))
 
-        var paint = Paint()
-        paint.style = Paint.Style.FILL
-        paint.color = Color.BLACK
-        paint.strokeWidth = 5f
-
-
-
-        var path = Path()
-//        path.lineTo(800f, 0f)
-
-
-        path.cubicTo(0f, 0f, 400f, 150f, 700f, 0f)
-        path.cubicTo(700f, 0f, 400f, 150f, 700f, 700f)
-
-
-
-        val bitmap = Bitmap.createBitmap(windowManager.defaultDisplay.width , windowManager.defaultDisplay.height, Bitmap.Config.ARGB_8888)
-        var canvas = Canvas(bitmap)
-
-        ivBitmap.setImageBitmap(bitmap)
-
-        canvas.drawPath(path, paint)
+//        var paint = Paint()
+//        paint.style = Paint.Style.STROKE
+//        paint.color = Color.BLACK
+//        paint.strokeWidth = 5f
+//
+//
+//
+//        var path = Path()
+//        path.lineTo(0f, 400f)
+//        path.cubicTo(0f, 400f, 0f, 750f, 700f, 750f)
+//        path.cubicTo(700f, 750f, 950f, 750f, 1500f, 1300f)
+//
+//
+//
+//
+//
+//        val bitmap = Bitmap.createBitmap(windowManager.defaultDisplay.width , windowManager.defaultDisplay.height, Bitmap.Config.ARGB_8888)
+//        var canvas = Canvas(bitmap)
+//
+//        ivBitmap.setImageBitmap(bitmap)
+//
+//        canvas.drawPath(path, paint)
 
 
 
