@@ -1,18 +1,21 @@
 package br.com.packapps.customviewcanvas
 
+import android.app.Activity
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.Path
+import android.graphics.*
 import android.os.Build
 import android.support.annotation.Nullable
 import android.support.annotation.RequiresApi
 import android.util.AttributeSet
+import android.view.Display
 import android.view.View
+import android.view.Window
 import android.widget.LinearLayout
 
 class LinearLayoutLogin : View {
+    var point : Point? = null
+
+
 
     @JvmOverloads
     constructor(
@@ -33,10 +36,17 @@ class LinearLayoutLogin : View {
     var paint : Paint? = null
 
     init {
-            paint = Paint()
-            paint!!.style = Paint.Style.FILL
-            paint!!.color = Color.BLACK
-            paint!!.strokeWidth = 5f
+        //screem size
+        val windowManager = (context as Activity).windowManager
+        val mDisplay = windowManager.defaultDisplay
+        point = Point()
+        mDisplay!!.getSize(point)
+
+
+        paint = Paint()
+        paint!!.style = Paint.Style.FILL
+        paint!!.color = Color.BLACK
+        paint!!.strokeWidth = 5f
     }
 
 
@@ -48,6 +58,7 @@ class LinearLayoutLogin : View {
 
 
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onDraw(canvas: Canvas?) {
 //        super.onDraw(canvas)
 
@@ -59,9 +70,25 @@ class LinearLayoutLogin : View {
         var path = Path()
         path.lineTo(0f, 400f)
         path.cubicTo(0f, 400f, 0f, 750f, 700f, 750f)
-        path.cubicTo(700f, 750f, 950f, 750f, 1500f, 1300f)
+        path.cubicTo(700f, 750f, 950f, 750f, 1500f, 1000f)
+        path.lineTo(1500f, 0f)
+        path.close()
+
+        //Two
+        var pain2 = Paint(Paint.ANTI_ALIAS_FLAG)
+        pain2.style = Paint.Style.FILL_AND_STROKE
+        pain2.color = Color.GREEN
+        pain2.strokeWidth = 3f
+
+        var path2 = Path()
+        path2.moveTo(point!!.x / 2f, 0f)
+        path2.cubicTo(point!!.x / 2f, 300f, 1300f, 600f, 1700f, 800f)
+        path2.lineTo(1700f, 0f)
+        path2.close()
+
 
         canvas!!.drawPath(path, paint)
+        canvas!!.drawPath(path2, pain2)
 
 
 
